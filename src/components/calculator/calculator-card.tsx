@@ -81,7 +81,7 @@ export function CalculatorCard() {
           </div>
         </div>
       </div>
-      <ResultCard result={result} copied={copied} onCopy={copySummary} onShare={shareSummary} />
+      <ResultCard result={result} people={people} copied={copied} onCopy={copySummary} onShare={shareSummary} />
     </div>
   );
 }

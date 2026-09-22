@@ -1,29 +1,85 @@
-# Welcome to your Lovable project
+# SplitMate
 
-This project was built with [Lovable](https://lovable.dev).
+SplitMate is a lightweight, responsive bill-splitting calculator that helps groups quickly calculate tips, totals, and individual shares.
 
-## Build with Lovable
+## Features
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+- Instant Kenyan Shilling bill, tip, total, and per-person calculations
+- Preset and custom tip percentages
+- Adjustable group sizes from 1 to 50 people
+- Optional per-person round-up with the exact amount shown
+- Copyable summaries and native device sharing with clipboard fallback
+- Accessible light and dark themes with saved preference
+- Inline validation and responsive layouts for mobile, tablet, and desktop
+- No accounts, database, external services, or bill history
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+## Screenshots
 
-## Development
+Add current desktop and mobile screenshots here after deployment.
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Tech stack
+
+- React 19
+- TypeScript
+- TanStack Start and TanStack Router
+- Tailwind CSS 4
+- Lucide React
+
+## Getting started
+
+Node.js 20 or newer is recommended.
+
+### Installation
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+git clone <repository-url>
+cd splitmate
+npm install
+```
+
+### Run locally
+
+```sh
 npm run dev
 ```
 
-## Built with
+Open the local URL shown in the terminal.
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+### Build
+
+```sh
+npm run build
+```
+
+To inspect the production build locally:
+
+```sh
+npm run preview
+```
+
+## Deployment
+
+SplitMate is frontend-only and can be deployed to Vercel, Netlify, or another static-compatible host. Install dependencies and use `npm run build` as the build command.
+
+## Project structure
+
+```text
+src/
+  components/       Interface sections and calculator controls
+  hooks/            Theme preference hook
+  routes/           Application routes and metadata
+  types/            Shared calculator types
+  utils/            Currency formatting and calculation logic
+public/              Public favicon and crawler configuration
+```
+
+## Future improvements
+
+- Named participant lists
+- Lightweight custom or uneven splits
+- Additional currencies
+- Installable progressive web app support
+
+## License
+
+This project is available under the MIT License.

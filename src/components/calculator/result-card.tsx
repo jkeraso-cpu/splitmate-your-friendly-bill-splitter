@@ -5,12 +5,13 @@ import { formatCurrency } from "@/utils/currency";
 
 interface ResultCardProps {
   result: SplitResult | null;
+  people: number;
   copied: boolean;
   onCopy: () => void;
   onShare: () => void;
 }
 
-export function ResultCard({ result, copied, onCopy, onShare }: ResultCardProps) {
+export function ResultCard({ result, people, copied, onCopy, onShare }: ResultCardProps) {
   if (!result) {
     return (
       <aside className="result-panel grid min-h-96 place-items-center text-center">
@@ -27,7 +28,7 @@ export function ResultCard({ result, copied, onCopy, onShare }: ResultCardProps)
     ["Original bill", formatCurrency(result.bill)],
     [`Tip (${result.tipPercentage.toLocaleString()}%)`, formatCurrency(result.tipAmount)],
     ["Total", formatCurrency(result.total)],
-    ["People", result.bill ? String(result.exactPerPerson ? Math.round(result.total / result.exactPerPerson) : 1) : "1"],
+    ["People", String(people)],
   ];
 
   return (
