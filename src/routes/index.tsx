@@ -1,24 +1,50 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CalculatorCard } from "@/components/calculator/calculator-card";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
+import { HowItWorks } from "@/components/how-it-works";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "SplitMate | Simple Bill Splitting Calculator" },
+      {
+        name: "description",
+        content: "Split restaurant bills, tips, and shared expenses quickly with SplitMate.",
+      },
+      { property: "og:title", content: "SplitMate | Simple Bill Splitting Calculator" },
+      {
+        property: "og:description",
+        content: "Split restaurant bills, tips, and shared expenses quickly with SplitMate.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <section className="pb-9 pt-12 text-center sm:pb-12 sm:pt-16">
+            <span className="badge">Simple group payments</span>
+            <h1 className="mx-auto mt-5 max-w-3xl text-4xl font-black text-foreground sm:text-5xl lg:text-6xl">
+              Split bills without the awkward math.
+            </h1>
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+              Enter the bill, choose how many people are paying, add a tip if needed, and SplitMate
+              handles the rest.
+            </p>
+          </section>
+          <CalculatorCard />
+          <HowItWorks />
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 }
