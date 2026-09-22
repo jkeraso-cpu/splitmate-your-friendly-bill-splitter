@@ -13,7 +13,7 @@ export function calculateTotal(bill: number, tipAmount: number): number {
 }
 
 export function calculatePerPerson(total: number, people: number): number {
-  return Math.round((toCents(total) / people) * 100) / 100;
+  return Math.round((total / people + Number.EPSILON) * 100) / 100;
 }
 
 export function roundPerPerson(amount: number): number {

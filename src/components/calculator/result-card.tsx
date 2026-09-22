@@ -35,7 +35,7 @@ export function ResultCard({ result, people, copied, onCopy, onShare }: ResultCa
     <aside className="result-panel" aria-live="polite">
       <div className="flex items-center gap-2 text-xs font-bold uppercase text-primary"><Sparkles className="size-4" /> Your split</div>
       <p className="mt-7 text-sm font-semibold text-muted-foreground">Each person pays</p>
-      <output className="result-amount mt-1 block text-4xl font-black text-foreground sm:text-5xl">{formatCurrency(result.perPerson, result.isRounded)}</output>
+      <output key={`${result.perPerson}-${result.isRounded}`} className="result-amount mt-1 block text-4xl font-black text-foreground sm:text-5xl">{formatCurrency(result.perPerson, result.isRounded)}</output>
       {result.isRounded && (
         <p className="mt-3 inline-flex rounded-md bg-primary/10 px-2.5 py-1 text-xs font-bold text-primary">Rounded up from {formatCurrency(result.exactPerPerson)}</p>
       )}

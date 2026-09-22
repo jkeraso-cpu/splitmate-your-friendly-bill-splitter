@@ -38,6 +38,7 @@ export function CalculatorCard() {
 
   const copySummary = async () => {
     if (!summary) return;
+    if (!navigator.clipboard) return;
     await navigator.clipboard.writeText(summary);
     setCopied(true);
     if (copyTimer.current) clearTimeout(copyTimer.current);
