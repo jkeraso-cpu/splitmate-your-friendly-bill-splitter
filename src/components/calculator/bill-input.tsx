@@ -37,9 +37,13 @@ export function BillInput({ value, error, onChange }: BillInputProps) {
         />
       </div>
       {error ? (
-        <p id="bill-error" className="text-xs font-medium text-destructive">{error}</p>
+        <p id="bill-error" className="text-xs font-medium text-destructive">
+          {error}
+        </p>
       ) : (
-        <p id="bill-help" className="helper-text">Enter the total before splitting.</p>
+        <p id="bill-help" className="helper-text">
+          Enter the total before splitting.
+        </p>
       )}
     </section>
   );

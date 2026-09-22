@@ -22,9 +22,14 @@ export function CalculatorCard() {
   const bill = parseBillInput(billInput);
   const billError = billInput && bill <= 0 ? "Enter a bill greater than KSh 0." : "";
   const customTipNumber = customTip === "" ? 0 : Number(customTip);
-  const customError = tipOption === "custom" && (customTip === "" || customTipNumber < 0 || customTipNumber > 100 || !Number.isFinite(customTipNumber))
-    ? "Enter a tip between 0% and 100%."
-    : "";
+  const customError =
+    tipOption === "custom" &&
+    (customTip === "" ||
+      customTipNumber < 0 ||
+      customTipNumber > 100 ||
+      !Number.isFinite(customTipNumber))
+      ? "Enter a tip between 0% and 100%."
+      : "";
   const tipPercentage = tipOption === "custom" ? customTipNumber : tipOption;
 
   const result = useMemo(() => {
@@ -48,7 +53,10 @@ export function CalculatorCard() {
   const shareSummary = async () => {
     if (!summary) return;
     if (navigator.share) {
-      try { await navigator.share({ title: "SplitMate Summary", text: summary }); return; } catch (error) {
+      try {
+        await navigator.share({ title: "SplitMate Summary", text: summary });
+        return;
+      } catch (error) {
         if (error instanceof DOMException && error.name === "AbortError") return;
       }
     }
@@ -56,7 +64,12 @@ export function CalculatorCard() {
   };
 
   const reset = () => {
-    setBillInput(""); setPeople(2); setTipOption(0); setCustomTip(""); setRoundUp(false); setCopied(false);
+    setBillInput("");
+    setPeople(2);
+    setTipOption(0);
+    setCustomTip("");
+    setRoundUp(false);
+    setCopied(false);
   };
 
   return (
@@ -67,22 +80,45 @@ export function CalculatorCard() {
             <p className="text-xs font-bold uppercase text-primary">Equal split</p>
             <h2 className="mt-1 text-xl font-extrabold text-foreground">Set up your bill</h2>
           </div>
-          <Button variant="ghost" size="sm" onClick={reset}><RotateCcw /> Reset</Button>
+          <Button variant="ghost" size="sm" onClick={reset}>
+            <RotateCcw /> Reset
+          </Button>
         </div>
         <div className="space-y-7">
           <BillInput value={billInput} error={billError} onChange={setBillInput} />
           <PeopleSelector people={people} onChange={setPeople} />
-          <TipSelector selected={tipOption} customTip={customTip} customError={customError} onSelect={setTipOption} onCustomChange={setCustomTip} />
+          <TipSelector
+            selected={tipOption}
+            customTip={customTip}
+            customError={customError}
+            onSelect={setTipOption}
+            onCustomChange={setCustomTip}
+          />
           <div className="flex items-center justify-between gap-5 rounded-lg border border-border bg-secondary/45 p-4">
             <div>
-              <label htmlFor="round-up" className="text-sm font-bold text-foreground">Round up each share</label>
-              <p className="mt-1 text-xs leading-5 text-muted-foreground">Next whole shilling. We’ll show the exact amount too.</p>
+              <label htmlFor="round-up" className="text-sm font-bold text-foreground">
+                Round up each share
+              </label>
+              <p className="mt-1 text-xs leading-5 text-muted-foreground">
+                Next whole shilling. We’ll show the exact amount too.
+              </p>
             </div>
-            <Switch id="round-up" checked={roundUp} onCheckedChange={setRoundUp} aria-label="Round each person's payment up" />
+            <Switch
+              id="round-up"
+              checked={roundUp}
+              onCheckedChange={setRoundUp}
+              aria-label="Round each person's payment up"
+            />
           </div>
         </div>
       </div>
-      <ResultCard result={result} people={people} copied={copied} onCopy={copySummary} onShare={shareSummary} />
+      <ResultCard
+        result={result}
+        people={people}
+        copied={copied}
+        onCopy={copySummary}
+        onShare={shareSummary}
+      />
     </div>
   );
 }

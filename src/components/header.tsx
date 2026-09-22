@@ -15,7 +15,12 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <BrandLogo />
         <div className="flex items-center gap-1.5">
-          <Button variant="ghost" size="sm" onClick={scrollToHowItWorks} className="hidden sm:inline-flex">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={scrollToHowItWorks}
+            className="hidden sm:inline-flex"
+          >
             How it works
           </Button>
           <Button
